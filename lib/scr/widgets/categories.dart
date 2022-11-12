@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodapp/scr/models/category.dart';
 import 'package:foodapp/scr/widgets/CustomText.dart';
-import 'package:foodapp/scr/widgets/common.dart';
+import 'package:foodapp/scr/helpers/style.dart';
 
 List<Category> categoriesList = [
   Category(name: "Salad", image: "salad.png"),

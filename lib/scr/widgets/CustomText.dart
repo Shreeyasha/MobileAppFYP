@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'common.dart';
+import '../helpers/style.dart';
 
 class CustomText extends StatelessWidget {
   final String text;

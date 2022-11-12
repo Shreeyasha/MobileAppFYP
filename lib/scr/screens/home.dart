@@ -1,10 +1,15 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:foodapp/scr/widgets/bottom_navigationIcons.dart';
 import 'package:foodapp/scr/widgets/categories.dart';
-import 'package:foodapp/scr/widgets/common.dart';
+import 'package:foodapp/scr/helpers/style.dart';
 import 'package:foodapp/scr/widgets/CustomText.dart';
+import 'package:foodapp/scr/widgets/desserts.dart';
+import 'package:foodapp/scr/widgets/fast_food.dart';
 import 'package:foodapp/scr/widgets/featured_products.dart';
+import 'package:foodapp/scr/widgets/salads.dart';
 import 'package:foodapp/scr/widgets/small_floating_button.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -12,10 +17,67 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  @override
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  
+  bool isloggedin = false;
+ 
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: white,
+      drawer: Drawer(
+        child: Container(
+          color:red[400]!,
+          child: ListView(
+            children: [
+              DrawerHeader(child: Row(
+                children: [
+                  CircleAvatar(
+                    backgroundColor: white,
+                    radius: 43,
+                    child: CircleAvatar(
+                      radius: 40,
+                      backgroundColor: red,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Column(
+                    mainAxisAlignment:MainAxisAlignment.center ,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Text("Welcome Shreeyasha"),
+                      ),
+                      SizedBox(
+                        height: 7,
+                      ),
+                      Container(
+                        height: 25,
+                        child: OutlinedButton(
+                        onPressed:(){},
+                        child: Text("Login", style: TextStyle(color:black, fontWeight: FontWeight.bold),
+                        ),
+                        style: ButtonStyle(
+                          
+                        ),
+                      
+                        
+                        ),
+                      
+                       
+                        )
+                        
+                   
+          
+                    ],
+                  )
+                ],
+              ),)
+            ],
+          ),
+        ),
+      ),
       body: SafeArea(
         child: ListView(
           children: <Widget>[
@@ -82,6 +144,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
               ),
+              
             ),
             SizedBox(
               height: 5,
@@ -214,16 +277,52 @@ class _HomeState extends State<Home> {
                                           color: white)),
                                 ], style: TextStyle(color: black)),
                               ),
-                            )
+                            ),
+                          
                           ],
                         )),
                   ),
+
                 ],
               ),
             ),
+            SizedBox(height: 10,),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: CustomText(
+                text: "Fast Food",
+                size: 20,
+                color: grey,
+              ),
+            ),
+            Fast_Food(),
+            SizedBox(height: 10,),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: CustomText(
+                text: "Salad",
+                size: 20,
+                color: grey,
+              ),
+            ),
+            Salad(),
+            SizedBox(height: 10,),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: CustomText(
+                text: "Desserts",
+                size: 20,
+                color: grey,
+              ),
+            ),
+            Desserts(),
           ],
         ),
       ),
+
+
+      
+
       bottomNavigationBar: Container(
         height: 76,
         color: white,
@@ -232,10 +331,18 @@ class _HomeState extends State<Home> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              BottomNavIcon(image: "home.png", name: "Home"),
-              BottomNavIcon(image: "shopping-bag.png", name: "Cart"),
-              BottomNavIcon(image: "target.png", name: "Near By"),
-              BottomNavIcon(image: "avatar.png", name: "Account"),
+              BottomNavIcon(
+                image: "home.png",
+                name: "Home",
+                onTap: () {},
+              ),
+              BottomNavIcon(
+                  image: "shopping-bag.png", name: "Cart", onTap: () {}),
+              BottomNavIcon(
+                image: "avatar.png",
+                name: "Account",
+                onTap: () {},
+              ),
             ],
           ),
         ),

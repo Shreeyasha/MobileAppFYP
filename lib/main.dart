@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:foodapp/scr/screens/home.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:foodapp/scr/screens/login.dart';
+import 'package:splashscreen/splashscreen.dart';
 
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+ Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -15,8 +21,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: Home(),
+      home: LoginScreen(),
+      
     );
   }
 }
+
+
 

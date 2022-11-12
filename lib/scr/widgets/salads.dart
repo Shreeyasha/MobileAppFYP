@@ -7,42 +7,43 @@ import 'package:foodapp/scr/helpers/style.dart';
 
 List<Product> productsList = [
   Product(
-      name: "Cereals",
+      name: "Chicken Salad",
       price: 5.99,
       rating: 4.2,
       vendor: "goodfood",
       wishList: true,
-      image: "1.jpg"),
+      image: "chicken_salad.png"),
   Product(
-      name: "Taccos",
-      price: 5.99,
-      rating: 12.99,
+      name: "Chinese Salad",
+      price: 7.99,
+      rating: 5.0,
       vendor: "goodfood",
       wishList: false,
-      image: "5.jpg"),
+      image: "chinese_salad.png"),
   Product(
-      name: "Taccos",
+      name: "Organic Salad",
+      price: 5.59,
+      rating: 2.9,
+      vendor: "goodfood",
+      wishList: true,
+      image: "organic_salad.png"),
+  Product(
+      name: "Fruit Salad",
       price: 15.99,
       rating: 4.9,
       vendor: "goodfood",
-      wishList: true,
-      image: "2.jpg"),
-  Product(
-      name: "Taccos",
-      price: 15.99,
-      rating: 4.2,
-      vendor: "goodfood",
       wishList: false,
-      image: "3.jpg"),
+      image: "fruit_salad.png"),
 ];
 
-class Featured extends StatelessWidget {
+class Salad extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 240,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
+          shrinkWrap: true,
           itemCount: productsList.length,
           itemBuilder: (_, index) {
             return Padding(
